@@ -8,17 +8,21 @@ def request_user_id():
 	return(user_id)
 
 def fetch_followers(user_id):
-	URL = 'https://api.twitter.com/1.1/followers/list.json'
-	PARAMS = {'screen_name':user_id}
+	# URL = 'https://api.twitter.com/1.1/followers/list.json'
+	URL = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json'
+	PARAMS = {
+		'screen_name':user_id,
+		'count': 2}
 	AUTH = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
 
 	# sending get request and saving the response as response object
 	r = requests.get(url = URL, params = PARAMS, auth=AUTH)
 	 
 	# extracting data in json format
-	for tweet in r.json():
-		print tweet['text']
-
+	# for tweet in r.json():
+		# print(tweet[0])
+		# print(tweet)
+	print(r.json())
 
 def main():
 	user_id = request_user_id()
