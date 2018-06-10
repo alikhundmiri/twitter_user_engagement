@@ -1,4 +1,5 @@
 from credentials import *
+from requests_oauthlib import OAuth1
 import requests
 
 
@@ -9,12 +10,14 @@ def request_user_id():
 def fetch_followers(user_id):
 	URL = 'https://api.twitter.com/1.1/followers/list.json'
 	PARAMS = {'screen_name':user_id}
+	AUTH = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
+
 	# sending get request and saving the response as response object
-	r = requests.get(url = URL, params = PARAMS)
+	r = requests.get(url = URL, params = PARAMS, auth=AUTH)
 	 
 	# extracting data in json format
-	data = r.json()
-	print(data)
+	for tweet in r.json():
+		print tweet['text']
 
 
 def main():
