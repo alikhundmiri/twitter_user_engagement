@@ -32,4 +32,5 @@ Charge people in Tiers?
 | 10,000 < 50,000  | 30$  |
 | 50,000 < 100,000  | 40$  |
 
-\* these prices are not final, and just placeholder 
+**NOTE:** These prices are not final, and just placeholder.
+
